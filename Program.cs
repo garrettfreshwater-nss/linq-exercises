@@ -40,7 +40,24 @@ namespace linq
                 96
             };
 
-            var fourSixMultiples = numbers.Where();
+            /*
+                Use the IEnumerable Where() method to build a new array of
+                numbers that match two conditions. Then chain the OrderBy()
+                method to order them ascending
+            */
+            var fourSixMultiples = numbers.Where(n => n % 4 == 0 || n % 6 == 0).OrderBy(n => n);
+            foreach (var n in fourSixMultiples)
+            {
+                Console.WriteLine(n);
+            }
+
+            /*
+                Use All() to see if every item in the collection passes the
+                provided conditions.
+            */
+            var allBetweenLarge = numbers.All(n => n > -100 && n < 400); // true
+            var allBetweenSmall = numbers.All(n => n > -5 && n < 39); // false
+
         }
     }
 }
